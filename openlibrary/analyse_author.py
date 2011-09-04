@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-from json import loads
+from json import loads, dumps
 from datetime import datetime
 from pprint import pprint
 
@@ -37,4 +37,4 @@ with open(INFILE) as infile:
 		if extra_fields:
 			record['EXTRA_FIELDS'] = extra_fields
 		record['_id'] = key.split('/')[-1]
-		pprint(record)
+		print dumps(record)

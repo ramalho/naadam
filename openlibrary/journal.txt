@@ -1,0 +1,39 @@
+$ wc ol_dump_authors_2011-08-31.txt
+ 6675818 163419272 2088185217 ol_dump_authors_2011-08-31.txt
+$ wc ol_dump_editions_2011-08-31.txt
+ 24444304 2261021013 25217931434 ol_dump_editions_2011-08-31.txt
+$ wc ol_dump_works_2011-08-31.txt 
+ 15010916 665008276 8223529535 ol_dump_works_2011-08-31.txt
+
+
+
+$ cat load.sh 
+#!/bin/sh
+time mongoimport -d openlibrary -c $1 $2
+$ ./load.sh author ../../data/ol_dump_authors_2011-08-31.json 
+connected to: 127.0.0.1
+                8084073/1602159877      0%
+                        34300   11433/second
+                18452419/1602159877     1%
+                        77000   12833/second
+                29051108/1602159877     1%
+                        123000  13666/second
+                38731902/1602159877     2%
+                        161400  13450/second
+                51054812/1602159877     3%
+                        212700  14180/second
+[...]
+                1577274925/1602159877   98%
+                        6572200 12663/second
+                1583188355/1602159877   98%
+                        6596900 12637/second
+                1589986748/1602159877   99%
+                        6625300 12619/second
+                1596738693/1602159877   99%
+                        6653300 12600/second
+imported 6675818 objects
+
+real    8m49.689s
+user    4m56.909s
+sys     0m53.872s
+$
