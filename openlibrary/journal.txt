@@ -1,3 +1,7 @@
+authors:     6 675 818
+works:      15 010 916
+editions:   24 444 304
+
 $ wc ol_dump_authors_2011-08-31.txt
  6675818 163419272 2088185217 ol_dump_authors_2011-08-31.txt
 $ wc ol_dump_editions_2011-08-31.txt
