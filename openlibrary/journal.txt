@@ -9,7 +9,34 @@ $ wc ol_dump_editions_2011-08-31.txt
 $ wc ol_dump_works_2011-08-31.txt 
  15010916 665008276 8223529535 ol_dump_works_2011-08-31.txt
 
+-----------------------------
+-----------------------------
 
+$ cat date_test.json 
+{"_id": "ex1", "dt_str": "2008-04-01T03:28:50.625999", "dt_obj": {"$date": 1207020530625}}
+{"_id": "ex2", "dt_str": "1970-01-01T00:00:01.000",    "dt_obj": {"$date": 1000}}
+{"_id": "ex3", "dt_str": "1970-01-01T00:00:12.345",    "dt_obj": {"$date": 12345}}
+{"_id": "ex4", "dt_str": "1970-01-01T00:00:59.999",    "dt_obj": {"$date": 59999}}
+{"_id": "ex5", "dt_str": "1970-01-01T00:01:00.000",    "dt_obj": {"$date": 60000}}
+{"_id": "ex6", "dt_str": "9999-12-31T23:59:59.9999",   "dt_obj": {"$date": 253402300799999}}
+$ mongoimport -d test -c days date_test.json 
+connected to: 127.0.0.1
+imported 6 objects
+luciano@ramalho:~/prj/naadam$ mongo
+MongoDB shell version: 1.8.3
+connecting to: test
+> db.days.find()
+{ "_id" : "ex1", "dt_str" : "2008-04-01T03:28:50.625999", "dt_obj" : ISODate("2008-04-01T03:28:50.625Z") }
+{ "_id" : "ex2", "dt_str" : "1970-01-01T00:00:01.000", "dt_obj" : ISODate("1970-01-01T00:00:01Z") }
+{ "_id" : "ex3", "dt_str" : "1970-01-01T00:00:12.345", "dt_obj" : ISODate("1970-01-01T00:00:12.345Z") }
+{ "_id" : "ex4", "dt_str" : "1970-01-01T00:00:59.999", "dt_obj" : ISODate("1970-01-01T00:00:59.999Z") }
+{ "_id" : "ex5", "dt_str" : "1970-01-01T00:01:00.000", "dt_obj" : ISODate("1970-01-01T00:01:00Z") }
+{ "_id" : "ex6", "dt_str" : "9999-12-31T23:59:59.9999", "dt_obj" : ISODate("9999-12-31T23:59:59.999Z") }
+> 
+
+
+-----------------------------
+-----------------------------
 
 $ cat load.sh 
 #!/bin/sh
